@@ -8,7 +8,7 @@ namespace PracticalWork5
         {
             Folder.ClassDocument.SaveDateNow();
             Folder.ClassDocument.SaveInDocument();
-            
+            Folder.ClassDocument.BinaryFile();
 
 
         }

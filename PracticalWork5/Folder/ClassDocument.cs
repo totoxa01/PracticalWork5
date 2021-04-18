@@ -43,6 +43,62 @@ namespace PracticalWork5.Folder
             Console.WriteLine($"Добавляю новое время: {time}");
         }
 
-        
+        private const string file = "binaryFile.bin";
+      
+        public static void BinaryFile()
+        {          
+
+            Console.WriteLine("Введите числа в диапазоне [0..255] через пробел");
+            var input = Console.ReadLine()?.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            if (input is null)
+            {
+                Console.WriteLine("Не корректный ввод чисел");
+                return;
+            }
+
+            var array = new byte[input.Length];
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (!byte.TryParse(input[i], out var number))
+                {
+                    Console.WriteLine($"Не правильное число {input[i]}");
+                    return;
+                }
+
+                array[i] = number;
+            }
+
+            SaveFileBinary(array);
+
+            Console.WriteLine("Посмотрите, что сейчас в файле binaryFile.bin");
+            Console.WriteLine("Прочитанный файл:");
+            ReadFileBinary(array);
+        }              
+
+        private static void SaveFileBinary(byte[] array)
+        {
+            using (var bw = new BinaryWriter(File.OpenWrite(file)))
+            {
+                bw.Write(array);
+                bw.Flush();
+            }
+        }
+
+        private static void ReadFileBinary(byte[] array)
+        {
+            byte[] newData;
+            using (var br = new BinaryReader(File.OpenRead(file)))
+            {
+                newData = br.ReadBytes(array.Length);
+            }
+
+            for (var i = 0; i < newData.Length; i++)
+            {
+                Console.Write(newData[i] + " ");
+            }
+        }
+
+       
     }
 }

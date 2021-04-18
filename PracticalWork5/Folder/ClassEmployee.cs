@@ -11,7 +11,7 @@ namespace PracticalWork5.Folder
         private string email;
         private string phone;
         private double salary;
-        private int age;
+        public int age;
 
         public ClassEmployee(string fio, string post, string email, string phone, double salary, int age)
         {
@@ -21,6 +21,17 @@ namespace PracticalWork5.Folder
             this.phone = phone;
             this.salary = salary;
             this.age = age;
+        }
+
+        private string Info()
+        {
+            return string.Format($"ФИО: {this.fio}\nДолжность: {this.post}\nEmail: {this.email}" +
+                $"\nНомер телефона: {this.phone}\nЗарплата: {this.salary}\nВозраст: {this.age}");
+        }
+
+        public void Print()
+        {
+            Console.WriteLine(Info());
         }
 
 

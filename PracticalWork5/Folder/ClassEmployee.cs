@@ -13,7 +13,8 @@ namespace PracticalWork5.Folder
         private double salary;
         public int age;
 
-        public ClassEmployee(string fio, string post, string email, string phone, double salary, int age)
+        public ClassEmployee(string fio, string post, string email, 
+            string phone, double salary, int age)
         {
             this.fio = fio;
             this.post = post;
